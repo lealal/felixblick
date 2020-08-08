@@ -11,6 +11,9 @@ helps to monitor what inquiries have been adressed.
 
 The media files uploaded from the admin panel are hosted using Amazon S3 buckets.
 
+The host is using the "live" repository of the version, which contains the amazon keys and other
+personal information that has been deleted in the public repository.
+
 The site is hosted in heroku using the free tier service and periodically goes to sleep.
 This, unfortunately, causes the app to reset. I have an app pinging the site every 30min
 but their policy forces to app to go to sleep after 6 six hours. I will try to keep it as
