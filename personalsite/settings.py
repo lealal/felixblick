@@ -88,6 +88,10 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -138,8 +142,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # Email Settings
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'email'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = 'lealaldev@gmail.com'
+EMAIL_HOST_PASSWORD = 'software10'
 EMAIL_USE_TLS = True
 
 AWS_QUERYSTRING_AUTH = False
@@ -147,9 +151,9 @@ AWS_QUERYSTRING_AUTH = False
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'amazonkey'
-AWS_SECRET_ACCESS_KEY = 'amazonsecretkey'
-AWS_STORAGE_BUCKET_NAME = 's3bucket'
+AWS_ACCESS_KEY_ID = 'AKIAV42RSXFP7DQ64YXE'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'staticfelix'
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
