@@ -16,5 +16,5 @@ personal information that has been deleted in the public repository.
 
 The site is hosted in heroku using the free tier service and periodically goes to sleep.
 This, unfortunately, causes the app to reset. I have an app pinging the site every 30min
-but their policy forces to app to go to sleep after 6 six hours. I will try to keep it as
-updated as possible.
+but their policy forces the app to go to sleep after 6 six hours. You may encounter
+longer than usual loading periods if accessing the app while asleep.
