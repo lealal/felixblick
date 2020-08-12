@@ -1,0 +1,24 @@
+{% extends 'blick/main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="content">
+        <div class="news" style="padding: 10px;margin-bottom: 20px;">
+            <h3>news</h3>
+            <div class="news-section"></div>
+                {% for n in news reversed %}
+                    <div class="section-news">
+                            <div class="left-side">
+                                <img src="{{n.image.url}}" alt="">
+                            </div>
+                            <div class="right-side">
+                                <a href="{{ n.url }}" target="_blank"><h4 class="news-title">{{ n.title }}</h4></a>
+                                <p>{{ n.description }}</p>
+                                <a href="{{ n.url }}" target="_blank" class="more">Read more</a>
+                            </div>    
+                    </div> 
+                {% endfor %}
+            </div>  
+        </div>
+    </div>
+{% endblock content %}

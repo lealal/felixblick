@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix Blick - Contact</title>
+    <link rel="stylesheet" href="../../../static/css/main.css">
+</head>
+<body>
+    <section class="navbar">
+        <nav>
+            <input type="checkbox" id="nav" class="hidden">
+            <label for="nav" class="nav-btn">
+                <i></i>
+                <i></i>
+                <i></i>
+            </label>
+            <div class="logo">
+                <a href="{% url 'home' %}">Felix Blick</a>
+            </div>
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'listings' %}">Listings</a></li>
+                    <li><a href="{% url 'news' %}">News</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <div class="container">
+        <img class="contactbg" src="{% static 'images/contactbg.jpg' %}" alt="">
+        
+        {% if name %}
+        <center>
+            <div class="container-contact">
+                <div class="wrapper">
+                    <h2 style="color: white;">Thanks {{ name }}!</h2>
+                    <p style="color: white;">I received your email and I will respond shortly</p>
+                </div>
+            </div>
+        </center>
+
+        {% else %}
+        <div class="container-contact" style="z-index: 9999;">
+            <div className="wrapper">
+                <form action="{% url 'contact' %}" className="contact-form" method="post">
+                    {% csrf_token %}
+                    <div class="input-fields">
+                        <input type="text" name="name" class="input" placeholder="Your Name" required>
+                        <input type="email" name="email" class="input" placeholder="Email" required>
+                        <input type="text" name="phone" class="input" placeholder="Phone Number" 
+                            pattern="([0-9]{3}-[0-9]{3}-[0-9]{4})|[0-9]{10}" required>
+                        <p class="radio-text">Please select one:</p>
+                        <div class="radio">
+                            <input type="radio" name="client" value="buyer" id="buyer" checked>
+                            <label for="buyer">Buyer</label>
+                        </div>
+                        <div class=radio>
+                            <input type="radio" name="client" value="seller" id="seller">
+                            <label for="seller">Seller</label>
+                        </div>
+                    </div>
+                    <div class="msg">
+                        <textarea placeholder="Message" name="message" required></textarea>
+                        <button type="submit" class="btn-contact">Send</button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'blick/main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content shadow">
+    <div class="listings-listing" style="padding: 10px;margin-bottom: 20px;">
+        <h3 class="title">Listings</h3>
+
+        {% for listing in listings reversed %}
+        <div class="listing">
+            <div class="left-side">
+                {% if listing.isSold %}
+                <div class="main-img">
+                    <img src="{{listing.photo_main.url}}" alt="" class="status">
+                    <h5 class="sold-text">Sold</h5>
+                </div>
+                {% elif listing.isPending %}
+                <div class="main-img">
+                    <img src="{{listing.photo_main.url}}" alt="" class="status">
+                    <h5 class="pending-text">Pending</h5>
+                </div>
+                {% elif listing.repBuyer %}
+                <div class="main-img">
+                    <img src="{{listing.photo_main.url}}" alt="" class="status">
+                    <h5 class="repbuyer1-text">Represented</h5>
+                    <h5 class="repbuyer2-text">Buyer</h5>
+                </div>
+                {% else %}
+                <div class="main-img">
+                    <img src="{{listing.photo_main.url}}" alt="">
+                </div>
+                {% endif %}
+            </div>
+            <div class="right-side">
+                <h4 class="address">{{ listing.name }}</h4>
+                <h5 class="address2">{{ listing.city }} {{ listing.state }} {{ listing.zipcode }}</h5>
+                <div class="info">
+                    <img class="icon" src="{% static 'images/bedroom.png' %}" alt="">
+                    <h5 class="info-item">{{ listing.bedroom }} bedroom</h5>
+                    <img class="icon" src="{% static 'images/bathroom.png' %}" alt="">
+                    <h5 class="info-item">{{ listing.bathroom }} bathroom</h5>
+                    <img class="icon" src="{% static 'images/size.png' %}" alt="">
+                    <h5 class="info-item">{{ listing.sqft }}sqft</h5>
+                </div>
+                <p>{{ listing.description }}</p>
+                {% load humanize %}
+                <h4 class="price">$ {{ listing.price|intcomma }}</h4>
+                <div class="buttons">
+                    <a href="{{ listing.url }}" target="_blank">
+                        <button class="btn">View Listing</button>
+                    </a>
+                    <a href="{% url 'contact' %}"><button class="btn">Contact</button></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+ </div>
+{% endblock content %}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix Blick - Real Estate Agent</title>
+    <link rel="stylesheet" href="../../../static/css/main.css">
+</head>
+<body>
+    <section class="navbar">
+        <nav>
+            <input type="checkbox" id="nav" class="hidden">
+            <label for="nav" class="nav-btn">
+                <i></i>
+                <i></i>
+                <i></i>
+            </label>
+            <div class="logo">
+                <a href="{% url 'home' %}">Felix Blick</a>
+                <img src="{% static 'images/cblogo.jpg' %}" alt="" class="logo-img">
+            </div>
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'listings' %}">Listings</a></li>
+                    <li><a href="{% url 'news' %}">News</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <div class="container">
+        <br>
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+    <footer class="main-content">
+        <div class="left box" style="padding: 10px 20px;">
+            <h3>About</h3>
+            <div class="content-footer">
+                <p>I moved from Sweden to the Duluth-area in 2016 to attend the University of Wisconsin-Superior. 
+                    While attending the university, I was a member of the University of Wisconsin-Superior's men's soccer 
+                    team, playing all four seasons before graduating in December 2019. I graduated with a Bachelor of Science 
+                    in International Business and Marketing.</p>
+            </div>
+        </div>
+
+        <div class="center box" style="padding: 10px 20px;">
+            <h3>Address</h3>
+            <div class="content-footer">
+                <div class="place">
+                    <img src="{% static 'images/marker.png' %}" class="social-logo" alt="location">
+                    <div class="text-address">
+                        <span>1732 London Rd</span>
+                        <span>Duluth, MN 55812</span>
+                    </div>
+                </div>
+                <div class="phone">
+                    <img src="{% static 'images/phone.png' %}" class="social-logo" alt="phone">
+                    <span>(715) 817-4431</span> 
+                </div>
+                <div class="email">
+                    <img src="{% static 'images/mail.png' %}" class="social-logo" alt="email">
+                    <a href="mailto:blickfelix@gmail.com" target="_blank" rel="noopener noreferrer" style="color: white;">
+                        blickfelix@gmail.com
+                    </a>
+                </div>
+                <div class="cb">
+                    <a href="https://www.coldwellbanker.com/Coldwell-Banker-East_West-Realty-7799c/Felix-Blick-7502619a" target="_blank">
+                        <img src="{% static 'images/cb.png' %}" class="social-logo" alt="cb">
+                    </a>
+                    <a href="https://www.coldwellbanker.com/Coldwell-Banker-East_West-Realty-7799c/Felix-Blick-7502619a" target="_blank" style="color: white;">
+                        Coldwell Banker
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="right box" style="padding: 10px 20px;">
+            <h3>Credentials</h3>
+            <div class="content-footer" style="display: flex;">
+                <ul class="credentials">
+                    <li>MN Real Estate Salesperson License</li>
+                    <li>Minnesota Association of Realtors</li>
+                    <li>Duluth Area Association of Realtor</li>
+                </ul>
+                <div class="social">
+                    <a href="https://www.facebook.com/felixblickrealestate/" target="_blank">
+                        <span><img src="{% static 'images/fb.png' %}" class="social-logo" alt="fb"></span>
+                    </a>
+                    <a href="https://www.instagram.com/felixblickrealestate/" target="_blank">
+                        <img src="{% static 'images/insta.png' %}" class="social-logo" alt="insta">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
