@@ -50,6 +50,12 @@ nav {
     font-size: 18px;
 }
 
+.logo-img {
+    width: 250px;
+    padding-left: 20px;
+    border-color: 2px solid black;
+}
+
 nav ul {
     float: right;
 }
@@ -159,7 +165,15 @@ nav ul li:last-child {
     .nav-btn i:nth-child(3) {
         margin-top: 4px;
     }
-} 
+}
+
+@media screen and (max-width: 550px){
+    .logo-img {
+        padding-left: 0;
+        padding-top: 20px;
+        border-left: none;
+    }
+}
 
 #nav:checked + .nav-btn {
     transform: rotate(45deg);
@@ -311,6 +325,12 @@ nav ul li:last-child {
 @media screen and (max-width: 700px){
     .section-news {
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .news-section {
+        display: inline;
     }
 }
 
