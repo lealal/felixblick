@@ -3,8 +3,8 @@ from django.core.mail import send_mail
 from .models import *
 
 def home(request):
-    listings = Listing.objects.filter(featured=True)
-    news = News.objects.filter(featured=True)
+    listings = Listing.objects.order_by('-created_at')
+    news = News.objects.order_by('-created_at')
     context = {
         'listings': listings,
         'news': news
@@ -12,12 +12,12 @@ def home(request):
     return render(request, 'blick/home.html', context)
 
 def listings(request):
-    listings = Listing.objects.all()
+    listings = Listing.objects.order_by('-created_at')
     context = {'listings': listings}
     return render(request, 'blick/listings.html', context)
 
 def news(request):
-    news = News.objects.all()
+    news = News.objects.order_by('-created_at')
     context = {'news': news}
     return render(request, 'blick/news.html', context)
 

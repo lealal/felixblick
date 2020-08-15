@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 # Create your models here.
 
@@ -19,6 +20,7 @@ class Listing(models.Model):
     isPending = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
     repBuyer = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=now)
 
     def __str__(self):
         return self.name
@@ -37,3 +39,4 @@ class News(models.Model):
     description = models.TextField()
     url = models.CharField(max_length=200)
     featured = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=now)
