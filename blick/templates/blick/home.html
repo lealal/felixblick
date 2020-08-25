@@ -15,9 +15,20 @@
             <h3 class="title">Listings</h3>
 
             {% for listing in listings %}
+            {% if listing.featured %}
             <div class="listing">
                 <div class="left-side">
-                    {% if listing.repBuyer %}
+                    {% if listing.isSold %}
+                    <div class="main-img">
+                        <img src="{{listing.photo_main.url}}" alt="" class="status">
+                        <h5 class="sold-text">Sold</h5>
+                    </div>
+                    {% elif listing.isPending %}
+                    <div class="main-img">
+                        <img src="{{listing.photo_main.url}}" alt="" class="status">
+                        <h5 class="pending-text">Pending</h5>
+                    </div>
+                    {% elif listing.repBuyer %}
                     <div class="main-img">
                         <img src="{{listing.photo_main.url}}" alt="" class="status">
                         <h5 class="repbuyer1-text">Represented</h5>
@@ -51,6 +62,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
             <div class="end-section">
                 <a href="{% url 'listings' %}" class="show-all">See All</a>
@@ -62,11 +74,13 @@
         <div class="news" style="padding: 10px;margin-bottom: 20px;">
             <h3>news</h3>
             <div class="news-section">
-                {% for n in news %}            
+                {% for n in news %}       
+                {% if n.featured %}     
                     <div class="section">
                         <a href="{{ n.url }}" target="_blank"><h4 class="news-title">{{ n.title }}</h4></a>
                         <p>{{ n.description }}</p>
                     </div>
+                {% endif %}
                 {% endfor %}
             </div>
             <div class="end-section">
